@@ -1,4 +1,4 @@
-# 初识PHP和面向对象编程 
+# PHP和OOP(面向对象编程)
    + Hypertext Preprocessor 超文本预处理器
    + 混合了C、Java、Perl、及自创语法
 
