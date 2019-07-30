@@ -1,5 +1,5 @@
 # 有关php的基本操作及常见内置API
-# 1.常见内置API 
+## 1.常见内置API 
   + 字符串函数
     1. 返回字符串长度 strlen() 
        ```
@@ -28,4 +28,4 @@
         echo str_replace("world", "Kitty", "Hello world!"); // 输出 Hello Kitty!
        ?>
        ```   
-# 2.       
+## 2.       
