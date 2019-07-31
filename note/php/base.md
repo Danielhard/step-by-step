@@ -111,7 +111,7 @@
 
 ## The Next: 
 
-[PHP基本操作及常用内置API]()
+[PHP基本操作及常用内置API](https://github.com/Danielhard/step-by-step/blob/master/note/php/basic.md)
 _ _ _
 
-[返回主目录]()
+[返回主目录](https://github.com/Danielhard/step-by-step/blob/master/note/php/index.md)
