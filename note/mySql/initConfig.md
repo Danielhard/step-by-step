@@ -23,7 +23,7 @@
       ```
 
     |参数|描述|
-    |:-|:-:|-:|
+    |:-:|:-:|
     |connection|	必需。规定要使用的 MySQL 连接。|
     |charset|	必需。规定默认字符集。|
     |返回值：|	如果成功则返回 TRUE，如果失败则返回 FALSE。|
@@ -53,9 +53,10 @@
     ```
     
     |参数|描述|
-    |:-|:-:|-:|
+    |:-:|:-:|
     |connection|	必需。规定要使用的 MySQL 连接。|
     |query|	必需，规定查询字符串|
     |resultmode|可选。一个常量。可以是下列值中的任意一个：MYSQLI_USE_RESULT（如果需要检索大量数据，请使用这个）MYSQLI_STORE_RESULT（默认）|
     |返回值|针对成功的 SELECT、SHOW、DESCRIBE 或 EXPLAIN 查询，将返回一个 mysqli_result 对象。针对其他成功的查询，将返回 TRUE。如果失败，则返回 FALSE。|
     |PHP 版本：|5+|
+    |更新日志：	|在 PHP 5.3.0 中新增了异步查询的功能。|
