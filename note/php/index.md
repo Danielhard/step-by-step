@@ -10,4 +10,4 @@
 
 [PHP基本操作及常用内置API](https://github.com/Danielhard/step-by-step/blob/master/note/php/basic.md)
 
-[PHP PDO]()
+[PHP PDO](https://github.com/Danielhard/step-by-step/blob/master/note/php/PDO.md)
