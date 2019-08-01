@@ -60,3 +60,5 @@
     |返回值|针对成功的 SELECT、SHOW、DESCRIBE 或 EXPLAIN 查询，将返回一个 mysqli_result 对象。针对其他成功的查询，将返回 TRUE。如果失败，则返回 FALSE。|
     |PHP 版本：|5+|
     |更新日志：	|在 PHP 5.3.0 中新增了异步查询的功能。|
+
+    
