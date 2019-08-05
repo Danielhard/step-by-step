@@ -74,14 +74,124 @@
        return "手机的宽度:{$this->width},手机的高度:{$this->height}";
    }
    ```
-## 修饰符
+## 修饰符->访问控制
    + public(公有的 默认)
    + private (私有的)
      声明成员属性方法后,使用privare修饰实现对成员的私有封装，封装后的成员在对象外部不能直接访问，只能在对象的内部方法中使用$this访问
    + protected(受保护的)
+
+   ```
+    <?php
+      /**
+      * 基类
+      * Define Person
+      */
+      class Person
+      {
+        //声明一个公有的构造函数
+        public function __construct (){}    
+        //声明一个公有的方法
+        public function say()
+        {
+           echo 'say';
+        }
+        // 声明一个受保护的方法
+        protected function swim()
+        {
+            echo 'swim<br/>
+        }
+        // 声明一个私有的方法
+        private function study()
+        {
+            echo 'study'
+        }
+        //不加关键字默认公有方法
+        function getFun()
+        {
+          $this->say();
+          $this->swim();
+          $this->study();
+        }
+      }
+      $people = new Person();
+      // 正常运行
+      $people->say();
+      // 产生错误
+      $people->swim();
+      // 产生错误
+      $people->study();
+      // 公有，受保护，私有都可以执行
+      $people->getFun(); 
+
+      /**
+      * 子类
+      * Define Boy
+      */
+
+     class Boy extends Person
+     {
+       function getFun2 ()
+       {
+         $this->sayName();
+         $this->swim();
+         // 这行会产生一个错误
+         $this->study(); 
+       }
+     }
+     $body = new Boy();
+     // 这行能被正常执行
+     $body ->sayName();
+     // 公有的和受保护的都可执行，但私有的不行
+     $body->getFun2(); 
+    ?>
+   ```
       
 ## 魔术方法
    + public __set ( string $name , mixed $value ) : void // 设置私有属性值的时候调用（protected private）
    + public __get ( string $name ) : mixed  // 获取私有属性值的时候调用
    + public __isset ( string $name ) : bool // 当判断一个私有成员属性是否被设置过时调用
    + public __unset ( string $name ) : void // 当销毁一个私有成员属性的时候调用
+
+## 构造函数 
+   ```
+    <?php
+      class Person{
+        //通过构造函数为成员变量赋初始值
+        function __construct($name,$age){
+          $this->name = $name;
+          $this->age = $age;
+        }
+        public function say(){
+            echo "姓名".$this->name . "年龄".$this->age;
+        }
+      }
+      $xiaowang = new Person('xiaowang ',28);
+      $xiaowang->say(); // 姓名 xiaowang 年龄 28
+    ?>
+   ```
+## 析构函数
+   **析构函数 (destructor) 与构造函数相反，当对象结束其生命周期时，系统自动执行析构函数，常用场景例如连接数据库在__construct中,处理完数据断开连接在__destruct方法中**
+   ```
+    <?php
+      class Person{
+         function __construct($name,$age){
+           this->name = $name;
+           this->age = $age;
+         }
+         public function say(){
+            echo "姓名".$this->name . "年龄".$this->age;
+         }
+         function __destruct(){
+             $this->name = '';
+             return true;
+         }
+      }
+      $xiaowang = new Person('xiaowang',28);
+      var_dump($xiaowang);
+      echo "<br/>"
+      if($xiaowang -> __destruct){
+          echo '销毁成功';
+          var_dump($xiaowang);
+      }
+    ?> 
+   ```   
