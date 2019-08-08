@@ -265,3 +265,113 @@ class Woman extends Person
      3. 接口定义方法，不能实现，而抽象类可以实现部分方法。
      4. 接口总基本数据类型为static 而抽象类不是
      5. 接口中不能含有静态代码块及静态方法。而抽象类可以含有静态方法和静态代码块 
+  
+## 常见关键字
+   + final
+     ```
+     只能修饰类和方法，不能使用final这个关键字修饰成员属性
+     特性:
+     1. 使用final关键字标识的类不能被继承
+     2. 使用final关键字标识的方法不能被子类覆盖(重写),是最终版本
+     目的:安全 没必要被继承或重写
+     ```
+   + static关键字
+     ```
+     静态修饰类成员属性和方法,类中静态属性方法不能实例化， 可以直接通过使用类名访问
+     格式：类::$静态属性   类::静态方法
+     在类的方法中。不能使用this引用静态变量、方法，用self引用
+     格式：self::$静态属性  self::静态方法
+     静态方法中不可以使用非静态的内容。就是不让使用$this.
+     静态属性是共享的。也就是new很多对象也是共用一个属性
+     ```
+   + 单例设计模式
+     ```
+     主要作用在保证面向对象编程设计中。一个类只有一个实例对象存在
+     ```
+   + const关键字
+     ```
+       常量 在PHP中定义常量使用define()函数,在类里面定义常量使用 'const' 这个关键字
+
+       const CONSTANT = 'constant value';//定义
+       echo self::CONSTANT;//类内部访问
+       echo className::CONSTANT;//类外部访问
+     ```
+   + instanceof关键字
+     **检测当前对象实例是否属于某一个类或者这个类的子类**
+
+## 自动加载类
+ **PHP4中当new实例化一个不存在的类时，则自动调用此函数__autoload(),并将类名作为参数传入次函数。可以使用这个实现类的自动加载**
+
+##PHP错误处理类
+  + 系统自带异常处理
+    ```
+     class Exception{
+       protected $message = "Unknown exception";//异常信息
+       protected $code = 0;   //用户自定义异常代码
+       protected $file; //发生异常的文件名
+       protected $line;
+       function __contract($message = null,$code =0);
+       final function getMessage();//返回异常的信息
+       final function getCode();//返回异常代码
+       final function getFile();//返回发生异常的文件名
+       final function getLine();//返回发生异常的代码行号
+       final function getTrace();//backtrace()数组
+       final function getTraceAsString();//已格式化成字符串的getTrace()信息
+       final __toString();//可输出的字符串
+     }
+    ```
+  + 自定义异常处理
+    tay{}catch(e){}
+    ```
+    <?php
+      try{
+          //...
+      }catch(Exception $e){
+        echo '错误文件';
+        echo $e->getFile();
+        //...
+      }
+    ?>
+    <?php
+    //自定义异常类时要继承系统的异常处理类
+     class myException extends Exception{
+      public function getAllInfo(){
+          return "异常文件为:{$this->getFile()}";
+      }
+
+     }
+     //捕捉时注意到类型约束为自己定义的异常处理类名
+     try{
+        if($_GET['num']==5){
+            throw new Exception('这是一个自定义的错误');
+        } 
+     }catch(myException $e){
+         echo $e->getAllInfo();
+     }
+    ?>
+    ```
+
+  + 捕捉多个异常处理
+  ```
+    class myException extends Exception{
+      public function getAllInfo(){
+          return $this->getMessage();
+      }
+     }
+ 
+   try{
+       //捕捉多个异常处理要抛出多个异常对象，不能是由一个异常处理类实例化和对象
+        if($_GET['num']==1){
+            throw new Exception('user')
+        } elseif($_GET['num']==2){
+          throw new Exception('sys')
+        }
+        echo 'success';
+        //在捕捉时系统的异常处理分支要放到最后
+        //注意类型约束
+     }catch(myException $e){
+         echo $e->getAllInfo();
+     }catch(Exception $e){
+         echo $e->getMessage();
+     }
+  ```
