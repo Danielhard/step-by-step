@@ -321,7 +321,7 @@ class Woman extends Person
      }
     ```
   + 自定义异常处理
-    tay{}catch(e){}
+    try{}catch(e){}
     ```
     <?php
       try{
