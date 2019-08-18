@@ -9,5 +9,5 @@
 
 ## 其他目录  
 
-   [PHP MySQL连接数据库]()
-   [MySQL复杂查询语句]()
+   [PHP MySQL连接数据库](https://github.com/Danielhard/step-by-step/blob/master/note/mySql/initConfig.md)
+   [MySQL复杂查询语句](https://github.com/Danielhard/step-by-step/blob/master/note/mySql/complrcitySql.md)
