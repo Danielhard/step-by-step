@@ -38,10 +38,10 @@
       报告和单测覆盖率检查
       npm install karma-coverage --save-dev
       coverageReporter:{
-          type:'html',dir:'coverage/'
+          type:'html',
+          dir:'coverage/'
       }//配置代码覆盖测试率生成结果
      ```
-  
      ```
       压力测试
       1.对网络接口做压力测试需要检查的几个常用指标有吞吐率，响应时间和并发数，这些指标反映了服务器并发处理能力
@@ -50,8 +50,6 @@
       4.ab -c 100 -n 100 http://localhost:8001 每秒持续发出28个请求Request per second 表示服务器每秒请求处理请求书即为QPS
       Failed requests 表示此次请求实际的请求数 客户端向服务器端建立连接，服务器端处理请求。等待报文等
      ```
-  
-     
   + 性能测试
      ```
       性能测试
